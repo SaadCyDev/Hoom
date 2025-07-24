@@ -25,11 +25,14 @@ import {
   Twitter,
   Linkedin,
   Smartphone,
+  Menu, // ✅ ADD THIS
+  X,
 } from "lucide-react";
 import React, { useState } from "react";
 
 function App() {
   const [showVideo, setShowVideo] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const features = [
     {
@@ -48,9 +51,34 @@ function App() {
       description: "Analysez vos performances et identifiez vos points forts",
     },
     {
-      icon: <Award className="w-8 h-8" />,
-      title: "Certifications",
-      description: "Obtenez des certifications reconnues",
+      icon: <Globe className="w-8 h-8" />,
+      title: "Admissions & Bourses",
+      description:
+        "Trouvez des opportunités d'études et de financement dans le monde entier",
+    },
+    {
+      icon: <CheckCircle className="w-8 h-8" />,
+      title: "Apprentissage Structuré",
+      description:
+        "Programme progressif et accompagné pour réussir chaque étape",
+    },
+    {
+      icon: <Brain className="w-8 h-8" />,
+      title: "IA Pédagogique",
+      description:
+        "Recommandations personnalisées grâce à une intelligence artificielle",
+    },
+    {
+      icon: <Video className="w-8 h-8" />,
+      title: "Vidéos de Cours",
+      description:
+        "Supports visuels pour faciliter la compréhension des notions clés",
+    },
+    {
+      icon: <MessageSquare className="w-8 h-8" />,
+      title: "Support Réactif",
+      description:
+        "Une assistance disponible pour répondre à toutes vos questions",
     },
   ];
 
@@ -152,24 +180,24 @@ function App() {
 
   const testimonials = [
     {
-      name: "Marie Dubois",
+      name: "Ayan Mohamed",
       role: "Terminale S",
       content:
-        "Hoom m'a permis de mieux comprendre les mathématiques. Les explications sont claires et les exercices progressifs.",
+        "Grâce à Hoom, j’ai mieux compris les mathématiques et les sciences. Les QCM et les vidéos m’ont beaucoup aidée.",
       rating: 5,
     },
     {
-      name: "Thomas Martin",
-      role: "L1 Informatique",
+      name: "Youssouf Ali",
+      role: "L1 informatique",
       content:
-        "La plateforme est parfaite pour réviser. J'ai amélioré mes notes grâce aux cours structurés.",
+        "La plateforme est très utile pour les révisions. Les cours sont clairs, bien structurés et faciles d'accès.",
       rating: 5,
     },
     {
-      name: "Sophie Laurent",
+      name: "Fatouma Hassan",
       role: "Terminale ES",
       content:
-        "Les ressources sont excellentes et l'interface est très intuitive. Je recommande vivement !",
+        "J'adore l'interface et les fonctionnalités. C’est motivant et vraiment adapté à notre programme.",
       rating: 5,
     },
   ];
@@ -184,7 +212,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      {/* <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
@@ -231,6 +259,109 @@ function App() {
               </div>
             </div>
           </div>
+        </div>
+      </header> */}
+
+      <header className="bg-white shadow-sm sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="flex items-center space-x-2">
+              <GraduationCap className="w-8 h-8 text-blue-600" />
+              <span className="text-2xl font-bold text-gray-900">Hoom</span>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                aria-label="Toggle Menu"
+              >
+                {menuOpen ? (
+                  <X className="w-6 h-6 text-gray-800" />
+                ) : (
+                  <Menu className="w-6 h-6 text-gray-800" />
+                )}
+              </button>
+            </div>
+
+            {/* Desktop navigation */}
+            <nav className="hidden md:flex space-x-8">
+              <a
+                href="#lycee"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Lycée
+              </a>
+              <a
+                href="#universite"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Université
+              </a>
+              <a
+                href="#features"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Fonctionnalités
+              </a>
+              <a
+                href="#temoignages"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Témoignages
+              </a>
+              <a
+                href="#contact"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Contact
+              </a>
+            </nav>
+
+            <div className="hidden md:block text-sm text-gray-600">
+              Plateforme éducative pour votre réussite
+            </div>
+          </div>
+
+          {/* Mobile navigation */}
+          {menuOpen && (
+            <nav className="md:hidden mt-2 space-y-2 pb-4 border-t pt-4">
+              <a
+                href="#lycee"
+                className="block text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Lycée
+              </a>
+              <a
+                href="#universite"
+                className="block text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Université
+              </a>
+              <a
+                href="#features"
+                className="block text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Fonctionnalités
+              </a>
+              <a
+                href="#temoignages"
+                className="block text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Témoignages
+              </a>
+              <a
+                href="#contact"
+                className="block text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                Contact
+              </a>
+              <div className="text-sm text-gray-600 mt-2">
+                Plateforme éducative pour votre réussite
+              </div>
+            </nav>
+          )}
         </div>
       </header>
 
@@ -822,7 +953,7 @@ function App() {
           </div>
 
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Hoom. Tous droits réservés.</p>
+            <p>&copy; 2025 Hoom. Tous droits réservés.</p>
           </div>
         </div>
       </footer>
