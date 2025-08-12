@@ -962,7 +962,7 @@ function App() {
                     <Video className="w-5 h-5" />
                   </a>
                   <a
-                    href="https://linkedin.com/company/hoom"
+                    href="https://www.linkedin.com/company/hoom-edtech/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-blue-600 transition-colors"
