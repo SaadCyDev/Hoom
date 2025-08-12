@@ -955,7 +955,7 @@ function App() {
                     <Twitter className="w-5 h-5" />
                   </a>
                   <a
-                    href="https://tiktok.com/@hoom"
+                    href="https://www.tiktok.com/@hoom_edtech?_t=ZM-8yoO6yHn45t&_r=1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"
