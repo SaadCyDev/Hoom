@@ -27,6 +27,8 @@ import {
   Smartphone,
   Menu, // ✅ ADD THIS
   X,
+  Plus, // 👈 ajouté
+  Minus,
 } from "lucide-react";
 import React, { useState } from "react";
 
@@ -81,6 +83,48 @@ function App() {
         "Une assistance disponible pour répondre à toutes vos questions",
     },
   ];
+  const faqs = [
+    {
+      q: "Qu’est-ce que Hoom ?",
+      a: "Hoom est une application éducative destinée aux élèves et étudiants francophones. Elle propose des quiz, des cours, des annales et des exercices pratiques alignés sur le programme du Bac, ainsi qu’un tuteur intelligent pour guider les révisions.",
+    },
+    {
+      q: "Comment télécharger et installer l’application ?",
+      a: "Hoom est disponible sur Google Play et l’App Store. Recherchez “Hoom”, téléchargez l’application, puis suivez les instructions pour créer votre compte.",
+    },
+    {
+      q: "Quels sont les contenus disponibles ?",
+      a: "Fiches de révision, quiz interactifs, exercices corrigés, sujets des années précédentes, conseils d’examens, et modules de micro-apprentissage ajoutés régulièrement.",
+    },
+    {
+      q: "Comment fonctionne le paiement via Waafi ?",
+      a: "Pour activer l’accès complet, envoyez le montant de l’abonnement au numéro Waafi : 77219608. Indiquez votre nom d’utilisateur ou numéro de téléphone dans le message. Après réception, vous recevrez une clé de produit par SMS ou e-mail à saisir dans l’app.",
+    },
+    {
+      q: "Combien coûte l’abonnement ?",
+      a: "Plusieurs formules (mensuelle, semestrielle, familiale). Les tarifs sont visibles dans l’application. Le contenu de base est gratuit, l’abonnement Premium débloque tous les cours et exercices.",
+    },
+    {
+      q: "En combien de temps vais-je recevoir ma clé après paiement ?",
+      a: "Généralement sous 24 heures après le paiement Waafi. Si vous ne recevez rien passé ce délai, contactez le support.",
+    },
+    {
+      q: "Que se passe-t-il si je perds ma clé de produit ?",
+      a: "Contactez l’assistance Hoom avec les détails du paiement (numéro Waafi et date). Nous vérifierons l’opération et vous fournirons une nouvelle clé.",
+    },
+    {
+      q: "Puis-je accéder à l’application hors connexion ?",
+      a: "Oui. Vous pouvez télécharger des cours/exercices pour les consulter offline. La progression se synchronise dès le retour en ligne.",
+    },
+    {
+      q: "L’application est-elle sécurisée pour les mineurs ?",
+      a: "Hoom intègre des contrôles parentaux et respecte la protection des données. Pas de publicité intrusive ni de contenu inapproprié.",
+    },
+    {
+      q: "Qui contacter en cas de problème ?",
+      a: "Support : info@hoom.space • Téléphone/WhatsApp : 77219608 • Et sur nos réseaux sociaux officiels.",
+    },
+  ];
 
   const terminalServices = [
     {
@@ -132,6 +176,36 @@ function App() {
       icon: <Globe className="w-6 h-6" />,
       title: "Bourses Mondiales",
       description: "Opportunités de financement partout dans le monde",
+    },
+  ];
+
+  const neuviemeServices = [
+    {
+      icon: <BookOpen className="w-6 h-6" />,
+      title: "Cours Résumés",
+      description:
+        "Fiches synthétiques pour chaque chapitre de math, SVT et physique",
+    },
+    {
+      icon: <Video className="w-6 h-6" />,
+      title: "Vidéos Interactives",
+      description:
+        "Explications animées pour mieux comprendre les notions clés",
+    },
+    {
+      icon: <Calculator className="w-6 h-6" />,
+      title: "Quiz & QCM",
+      description: "Testez vos connaissances par matière et par chapitre",
+    },
+    {
+      icon: <Target className="w-6 h-6" />,
+      title: "Exercices Ciblés",
+      description: "Entraînement par niveau de difficulté pour bien progresser",
+    },
+    {
+      icon: <FileText className="w-6 h-6" />,
+      title: "Fiches de Révision",
+      description: "Tout ce qu'il faut retenir avant les contrôles",
     },
   ];
 
@@ -208,60 +282,14 @@ function App() {
     { number: "98%", label: "Satisfaction" },
     { number: "24/7", label: "Support" },
   ];
+  const [openFaqs, setOpenFaqs] = useState<number[]>([]);
+  const toggleFaq = (i: number) =>
+    setOpenFaqs((prev) =>
+      prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]
+    );
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      {/* <header className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <GraduationCap className="w-8 h-8 text-blue-600" />
-              <span className="text-2xl font-bold text-gray-900">Hoom</span>
-            </div>
-
-            <nav className="hidden md:flex space-x-8">
-              <a
-                href="#lycee"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                Lycée
-              </a>
-              <a
-                href="#universite"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                Université
-              </a>
-              <a
-                href="#features"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                Fonctionnalités
-              </a>
-              <a
-                href="#temoignages"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                Témoignages
-              </a>
-              <a
-                href="#contact"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                Contact
-              </a>
-            </nav>
-
-            <div className="flex items-center">
-              <div className="text-sm text-gray-600">
-                Plateforme éducative pour votre réussite
-              </div>
-            </div>
-          </div>
-        </div>
-      </header> */}
-
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -312,6 +340,13 @@ function App() {
                 Témoignages
               </a>
               <a
+                href="#faq"
+                className="text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                FAQ
+              </a>
+
+              <a
                 href="#contact"
                 className="text-gray-700 hover:text-blue-600 transition-colors"
               >
@@ -351,6 +386,13 @@ function App() {
               >
                 Témoignages
               </a>
+              <a
+                href="#faq"
+                className="block text-gray-700 hover:text-blue-600 transition-colors"
+              >
+                FAQ
+              </a>
+
               <a
                 href="#contact"
                 className="block text-gray-700 hover:text-blue-600 transition-colors"
@@ -483,24 +525,52 @@ function App() {
         </div>
       </section>
 
-      {/* Lycée & Université Sections */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Lycée */}
-            <div id="lycee" className="bg-white p-8 rounded-2xl shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Bloc 9e Année */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm">
               <div className="flex items-center mb-6">
-                <Target className="w-8 h-8 text-green-600 mr-3" />
-                <h3 className="text-2xl font-bold text-gray-900">
-                  Lycée - Terminale
-                </h3>
+                <GraduationCap className="w-8 h-8 text-purple-600 mr-3" />
+                <h3 className="text-2xl font-bold text-gray-900">9e Année</h3>
               </div>
               <p className="text-gray-600 mb-6">
-                Préparez-vous efficacement au baccalauréat avec nos services
-                complets adaptés à toutes les filières.
+                Prépare-toi pour le brevet avec des ressources interactives et
+                adaptées à ton niveau.
               </p>
+              <div className="grid grid-cols-1 gap-4 mb-6">
+                {neuviemeServices.map((service, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    <div className="text-purple-600 mt-1">{service.icon}</div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900 text-sm">
+                        {service.title}
+                      </h4>
+                      <p className="text-gray-600 text-xs">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <button className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+                Explorer les services 9e
+              </button>
+            </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            {/* Bloc Terminale */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm">
+              <div className="flex items-center mb-6">
+                <Target className="w-8 h-8 text-green-600 mr-3" />
+                <h3 className="text-2xl font-bold text-gray-900">Terminale</h3>
+              </div>
+              <p className="text-gray-600 mb-6">
+                Préparez-vous efficacement au bac avec nos contenus interactifs.
+              </p>
+              <div className="grid grid-cols-1 gap-4 mb-6">
                 {terminalServices.map((service, index) => (
                   <div
                     key={index}
@@ -518,24 +588,21 @@ function App() {
                   </div>
                 ))}
               </div>
-
               <button className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
-                Explorer les services Lycée
+                Explorer Terminale
               </button>
             </div>
 
-            {/* Université */}
-            <div id="universite" className="bg-white p-8 rounded-2xl shadow-sm">
+            {/* Bloc Université */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm">
               <div className="flex items-center mb-6">
                 <GraduationCap className="w-8 h-8 text-blue-600 mr-3" />
                 <h3 className="text-2xl font-bold text-gray-900">Université</h3>
               </div>
               <p className="text-gray-600 mb-6">
-                Excellez dans vos études supérieures avec des ressources
-                adaptées à votre filière et un accompagnement personnalisé.
+                Ressources pour réussir à l’université avec des outils adaptés.
               </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="grid grid-cols-1 gap-4 mb-6">
                 {universityServices.map((service, index) => (
                   <div
                     key={index}
@@ -553,9 +620,8 @@ function App() {
                   </div>
                 ))}
               </div>
-
               <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                Explorer les services Université
+                Explorer Université
               </button>
             </div>
           </div>
@@ -698,14 +764,14 @@ function App() {
               <Phone className="w-6 h-6 text-blue-600 mt-1" />
               <div>
                 <h4 className="font-semibold text-gray-900">Téléphone</h4>
-                <p className="text-gray-600">+25377219608</p>
+                <p className="text-gray-600">77219608</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
               <MessageCircle className="w-6 h-6 text-green-600 mt-1" />
               <div>
                 <h4 className="font-semibold text-gray-900">WhatsApp</h4>
-                <p className="text-gray-600">+25377219608</p>
+                <p className="text-gray-600">77219608</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
@@ -719,8 +785,75 @@ function App() {
             </div>
           </div>
 
+          <section id="faq" className="py-20 bg-white">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-gray-900 mb-3">
+                  Questions fréquentes
+                </h2>
+                <p className="text-gray-600">
+                  Tout ce qu’il faut savoir pour bien démarrer avec Hoom
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {faqs.map((item, i) => {
+                  const isOpen = openFaqs.includes(i);
+                  return (
+                    <div
+                      key={i}
+                      className={`border border-gray-200 rounded-xl transition-colors ${
+                        isOpen ? "bg-gray-50" : "bg-white"
+                      }`}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => toggleFaq(i)}
+                        aria-expanded={isOpen}
+                        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
+                      >
+                        <span className="text-base md:text-lg font-semibold text-gray-900">
+                          {item.q}
+                        </span>
+                        <span className="shrink-0 text-gray-500">
+                          {isOpen ? (
+                            <Minus className="w-5 h-5" aria-hidden="true" />
+                          ) : (
+                            <Plus className="w-5 h-5" aria-hidden="true" />
+                          )}
+                        </span>
+                      </button>
+
+                      {/* Réponse (avec animation d’ouverture/fermeture) */}
+                      <div
+                        className={`px-5 pb-4 transition-all duration-300 ${
+                          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                        } overflow-hidden`}
+                      >
+                        <p className="text-gray-700 leading-relaxed">
+                          {item.a}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Petit CTA sous la FAQ */}
+              <div className="text-center mt-10">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
+                >
+                  Besoin d’aide ? Contactez le support
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </section>
+
           {/* Contact Form */}
-          <form className="space-y-6 text-left">
+          {/* <form className="space-y-6 text-left">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label
@@ -773,7 +906,7 @@ function App() {
                 Envoyer
               </button>
             </div>
-          </form>
+          </form> */}
         </div>
       </section>
 
