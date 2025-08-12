@@ -21,6 +21,7 @@ import {
   Trophy,
   Search,
   Facebook,
+  Youtube,
   Instagram,
   Twitter,
   Linkedin,
@@ -960,6 +961,14 @@ function App() {
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     <Video className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://youtube.com/@hoom-edtech?si=Uh5Nk0MM1QII3HKG"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-blue-600 transition-colors"
+                  >
+                    <Youtube className="w-5 h-5" />
                   </a>
                   <a
                     href="https://www.linkedin.com/company/hoom-edtech/"
