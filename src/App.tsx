@@ -291,8 +291,6 @@ function App() {
       content:
         "Grâce à Hoom, j'ai mieux compris les mathématiques et les sciences. Les QCM et les vidéos m'ont beaucoup aidée.",
       rating: 5,
-      avatar:
-        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
     },
     {
       name: "Youssouf Ali",
@@ -300,8 +298,6 @@ function App() {
       content:
         "La plateforme est très utile pour les révisions. Les cours sont clairs, bien structurés et faciles d'accès.",
       rating: 5,
-      avatar:
-        "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg",
     },
     {
       name: "Fatouma Hassan",
@@ -309,8 +305,6 @@ function App() {
       content:
         "J'adore l'interface et les fonctionnalités. C'est motivant et vraiment adapté à notre programme.",
       rating: 5,
-      avatar:
-        "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg",
     },
   ];
 
