@@ -948,11 +948,7 @@ function App() {
                 desc: "Mathématiques, Physique, Chimie, Informatique",
                 gradient: "from-blue-500 to-cyan-500",
               },
-              {
-                title: "Médecine & Santé",
-                desc: "PACES, Médecine, Pharmacie, Kinésithérapie",
-                gradient: "from-emerald-500 to-teal-500",
-              },
+
               {
                 title: "Économie & Gestion",
                 desc: "Économie, Commerce, Management, Finance",
