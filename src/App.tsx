@@ -1024,11 +1024,11 @@ function App() {
                   "{testimonial.content}"
                 </p>
                 <div className="flex items-center space-x-4">
-                  <img
+                  {/* <img
                     src={testimonial.avatar}
                     alt={testimonial.name}
                     className="w-16 h-16 rounded-full object-cover border-2 border-gray-200 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500"
-                  />
+                  /> */}
                   <div>
                     <div className="font-bold text-gray-900">
                       {testimonial.name}
