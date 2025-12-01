@@ -37,12 +37,22 @@ import {
   PlayCircle,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import im from "../public/hero.webp";
+import logow from "./icon4.png";
 
 function App() {
   const [showVideo, setShowVideo] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  const phrases = [
+    "Votre Réussite Scolaire",
+    "l'Excellence Académique",
+    "Réussir Vos Examens",
+    "votre Progression",
+  ];
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,6 +68,13 @@ function App() {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
+    }, 3000); // Change toutes les 3 secondes
+    return () => clearInterval(interval);
+  }, [phrases.length]); // Dépendance à phrases.length
 
   const features = [
     {
@@ -376,11 +393,11 @@ function App() {
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center space-x-3 group cursor-pointer">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#2196F3] to-cyan-500 rounded-2xl blur opacity-75 group-hover:opacity-100 transition-opacity animate-pulse"></div>
-                <div className="relative bg-gradient-to-br from-[#2196F3] to-cyan-500 p-3 rounded-2xl transform group-hover:scale-110 transition-transform duration-300">
-                  <GraduationCap className="w-7 h-7 text-white" />
+                <div className="relative p-3 rounded-2xl transform group-hover:scale-110 transition-transform duration-300">
+                  <img src={logow} className="w-8 h-8" alt="Hoom logo" />
                 </div>
               </div>
+
               <span className="text-3xl font-bold bg-gradient-to-r from-[#2196F3] to-cyan-600 bg-clip-text text-transparent">
                 Hoom
               </span>
@@ -467,77 +484,133 @@ function App() {
         </div>
       </header>
 
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-16 md:py-20 bg-gradient-to-br from-white via-pink-50/50 to-white">
+        {/* Abstract Background Shapes (Luxe Style) */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg')",
-          }}
-        />
+          className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-orange-500 rounded-full blur-3xl opacity-40 transform translate-x-1/4 -translate-y-1/2 hidden lg:block"
+          style={{ zIndex: 0 }}
+        ></div>
+        <div
+          className="absolute top-1/4 right-1/4 w-[250px] h-[250px] bg-gray-700 rounded-full blur-3xl opacity-10 hidden lg:block"
+          style={{ zIndex: 0 }}
+        ></div>
 
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2196F3]/90 via-cyan-600/85 to-teal-600/90 animate-gradient-shift"></div>
+        {/* Contenu principal centré */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            {/* Colonne 2 : Le Texte et CTA (Gauche) */}
+            <div className="w-full lg:w-1/2 order-1 lg:order-1 text-center lg:text-left text-gray-900">
+              {/* Intro/Greeting */}
 
-        <div className="absolute inset-0">
-          {[...Array(30)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-white rounded-full animate-float"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${3 + Math.random() * 4}s`,
-                opacity: 0.3 + Math.random() * 0.3,
-              }}
-            />
-          ))}
-        </div>
+              {/* Titre */}
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+                {/* Hoom est là pour */}
+                <span
+                  key={currentPhraseIndex} // La clé force le re-rendu, essentiel pour la transition CSS
+                  className="block bg-gradient-to-r from-gray-600 to-gray-700 bg-clip-text text-transparent transition-opacity duration-1000 animate-fade-in"
+                >
+                  {phrases[currentPhraseIndex]}
+                </span>
+              </h1>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <h1
-            className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight animate-fade-in-up"
-            style={{ animationDelay: "0.2s" }}
-          >
-            Votre réussite scolaire
-            <span className="block mt-3 bg-gradient-to-r from-amber-300 via-orange-300 to-amber-300 bg-clip-text text-transparent animate-shimmer">
-              commence ici
-            </span>
-          </h1>
+              {/* Sous-titre */}
+              <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-lg lg:max-w-none mx-auto lg:mx-0 leading-relaxed">
+                Hoom est là pour vous accompagner vers la réussite, avec des
+                sujets, des cours personnalisés, des QCM, des exercices et des
+                annales spécialement conçus pour vous.
+              </p>
 
-          <p
-            className="text-xl md:text-2xl text-blue-50 mb-10 max-w-3xl mx-auto leading-relaxed animate-fade-in-up"
-            style={{ animationDelay: "0.4s" }}
-          >
-            Hoom accompagne les lycéens et les étudiants universitaires vers
-            l'excellence académique avec des cours personnalisés, des outils
-            innovants et des services informatiques professionnels.
-          </p>
+              {/* Boutons d'Action */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                {/* Bouton Primaire (Pink Luxe Style) */}
+                <button className="group relative bg-gradient-to-r from-orange-600 to-fuchsia-700 text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 hover:shadow-2xl hover:shadow-fuchsia-500/50 transform hover:scale-105">
+                  <span className="relative z-10">Démarrer l'App</span>
+                  <ArrowRight className="w-5 h-5 ml-2 inline-block transition-transform group-hover:translate-x-1" />
+                </button>
 
-          <div
-            className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
-            style={{ animationDelay: "0.6s" }}
-          >
-            <button className="group relative bg-white text-[#2196F3] px-8 py-4 rounded-2xl text-lg font-bold hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-2 overflow-hidden transform hover:scale-105 hover:-translate-y-1">
-              <span className="absolute inset-0 bg-gradient-to-r from-[#2196F3]/10 to-cyan-500/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
-              <span className="relative z-10">Commencer gratuitement</span>
-              <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
-            </button>
+                {/* Bouton Secondaire (Outline Style) */}
+                <button
+                  // onClick={() => setShowVideo(true)}
+                  className="group relative border-2 border-gray-400 text-gray-800 px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 hover:bg-gray-100 hover:border-pink-600 transform hover:scale-105"
+                >
+                  <PlayCircle className="w-5 h-5 mr-2 inline-block transition-transform" />
+                  <span>Découvrir la plateforme</span>
+                </button>
+              </div>
+            </div>
 
-            <button
-              onClick={() => setShowVideo(true)}
-              className="group relative border-2 border-white text-white px-8 py-4 rounded-2xl text-lg font-bold hover:bg-white hover:text-[#2196F3] transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105 hover:-translate-y-1"
-            >
-              <PlayCircle className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-              <span>Découvrir la plateforme</span>
-            </button>
+            {/* Colonne 1 : L'Image et les Cartes (Droite) */}
+            <div className="w-full lg:w-1/2 order-2 lg:order-2 flex justify-center relative min-h-[500px]">
+              {/* Large Abstract Shape behind the image */}
+              <div
+                className="absolute w-[450px] h-[450px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-pink-500 rounded-full shadow-2xl"
+                style={{
+                  clipPath:
+                    "polygon(20% 0%, 100% 0%, 100% 80%, 80% 100%, 0% 100%, 0% 20%)",
+                }}
+              >
+                <div
+                  className="absolute inset-0 bg-pink-600 opacity-80 rounded-full"
+                  style={{
+                    clipPath:
+                      "polygon(20% 0%, 100% 0%, 100% 80%, 80% 100%, 0% 100%, 0% 20%)",
+                  }}
+                ></div>
+              </div>
+
+              {/* Main Image Card (floating a bit) */}
+              <div className="p-2 bg-white rounded-[2rem] shadow-2xl max-w-sm w-full relative z-10 self-center">
+                <img
+                  src={im}
+                  alt="Professeur africain souriant"
+                  className="w-full h-auto object-cover rounded-[1.75rem]"
+                />
+              </div>
+
+              {/* Floating Mini-Card 1: Projects/Courses */}
+              <div className="absolute top-10 lg:top-20 right-10 transform translate-x-1/3 bg-white p-5 rounded-3xl shadow-xl flex items-center space-x-3 transition-all duration-300 hover:scale-105 cursor-pointer z-20">
+                <div className="bg-pink-100 p-2 rounded-xl">
+                  <BookOpen className="w-6 h-6 text-pink-600" />
+                </div>
+                <div>
+                  <span className="text-xl font-bold text-pink-600 block">
+                    20+
+                  </span>
+                  <span className="text-gray-500 text-sm">
+                    Cours & Matières
+                  </span>
+                </div>
+              </div>
+
+              {/* Floating Mini-Card 2: Satisfaction */}
+              <div className="absolute bottom-10 left-10 transform -translate-x-1/3 bg-white p-5 rounded-3xl shadow-xl flex items-center space-x-3 transition-all duration-300 hover:scale-105 cursor-pointer z-20">
+                <Star className="w-6 h-6 text-yellow-500" />
+                <div>
+                  <span className="text-xl font-bold text-gray-800 block">
+                    4.8
+                  </span>
+                  <span className="text-gray-500 text-sm">Satisfaction</span>
+                </div>
+              </div>
+
+              {/* Floating Mini-Card 3: Role/Label (Optional) */}
+              <div className="absolute bottom-20 right-0 transform translate-x-1/4 bg-white p-5 rounded-3xl shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer z-20">
+                <div className="flex items-center space-x-3">
+                  <GraduationCap className="w-6 h-6 text-blue-600" />
+                  <div>
+                    <span className="font-bold text-gray-800 block">
+                      Tuteur IA
+                    </span>
+                    <span className="text-gray-500 text-sm">
+                      Disponible 24/7
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-2">
-            <div className="w-1 h-3 bg-white/50 rounded-full animate-scroll"></div>
-          </div>
+          {/* Your original services section title, moved here to match Luxe style */}
         </div>
       </section>
 
@@ -1165,10 +1238,6 @@ function App() {
 
       <section id="contact" className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-6 py-2 bg-blue-100 rounded-full mb-6 animate-fade-in-up">
-            <Mail className="w-5 h-5 text-[#2196F3] animate-pulse" />
-            <span className="text-[#2196F3] font-bold">Contact</span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 animate-fade-in-up">
             Contactez-nous
           </h2>
@@ -1232,9 +1301,6 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="animate-fade-in-up">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="bg-gradient-to-br from-[#2196F3] to-cyan-500 p-2 rounded-2xl transform hover:scale-110 hover:rotate-12 transition-all duration-300">
-                  <GraduationCap className="w-8 h-8 text-white" />
-                </div>
                 <span className="text-3xl font-bold">Hoom</span>
               </div>
               <p className="text-gray-400 mb-6 leading-relaxed">
