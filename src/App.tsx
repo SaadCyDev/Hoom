@@ -40,6 +40,16 @@ import { useState, useEffect } from "react";
 import im from "../public/hero.webp";
 import logow from "./icon4.png";
 
+import im1 from '../public/upload/1.jpeg'
+import im2 from '../public/upload/2.jpeg'
+import im3 from '../public/upload/3.jpeg'
+import im4 from '../public/upload/4.jpeg'
+import im5 from '../public/upload/5.jpeg'
+import im6 from '../public/upload/6.jpeg'
+import im7 from '../public/upload/7.jpeg'
+import im8 from '../public/upload/8.jpeg'
+
+
 function App() {
   const [showVideo, setShowVideo] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -726,6 +736,225 @@ function App() {
           </div>
         </div>
       </section>
+<section id="galerie" className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+  {/* Éléments décoratifs de fond */}
+  <div className="absolute inset-0">
+    <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-200 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
+    <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-200 rounded-full filter blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }}></div>
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.8)_0%,transparent_50%)]"></div>
+    </div>
+  </div>
+
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    {/* En-tête de section élégant */}
+    <div className="text-center mb-20">
+      {/* Badge */}
+      <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-gray-200 mb-6 animate-fade-in-up">
+        <div className="w-2 h-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full animate-pulse"></div>
+        <span className="text-sm font-medium text-gray-700">Galerie</span>
+        <div className="w-2 h-2 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+      </div>
+
+      {/* Titre principal */}
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in-up">
+        <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+          Découvrez l'interface
+        </span>
+        <br />
+        <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          de Hoom en images
+        </span>
+      </h2>
+
+      {/* Description */}
+      <p className="text-lg text-gray-500 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        Une expérience utilisateur soignée, des designs intuitifs pour une apprentissage optimal
+      </p>
+
+      {/* Statistiques minimalistes */}
+      <div className="flex justify-center gap-8 mt-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <div className="text-center">
+          <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">8+</div>
+          <div className="text-xs text-gray-400 uppercase tracking-wider">Interfaces</div>
+        </div>
+        <div className="w-px h-8 bg-gray-200"></div>
+        <div className="text-center">
+          <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">100%</div>
+          <div className="text-xs text-gray-400 uppercase tracking-wider">Responsive</div>
+        </div>
+        <div className="w-px h-8 bg-gray-200"></div>
+        <div className="text-center">
+          <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Moderne</div>
+          <div className="text-xs text-gray-400 uppercase tracking-wider">Design</div>
+        </div>
+      </div>
+    </div>
+
+    {/* Première rangée - Défilement gauche */}
+    <div className="relative mb-8 group">
+      {/* Badge de rangée */}
+      <div className="absolute -top-4 left-8 z-20">
+        <span className="text-xs font-medium text-gray-400 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-gray-200">
+          Interface principale
+        </span>
+      </div>
+
+      {/* Overlays gradients sophistiqués */}
+      <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-gray-50 via-gray-50/80 to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-gray-50 via-gray-50/80 to-transparent z-10 pointer-events-none"></div>
+      
+      {/* Conteneur du carrousel avec effet miroir */}
+      <div className="overflow-hidden rounded-3xl">
+        <div className="flex gap-6 animate-scroll-left hover:pause-animation py-4">
+          {/* Images 1-4 avec cadre élégant */}
+          {[im1, im2, im3, im4].map((img, index) => (
+            <div key={`row1-${index}`} className="relative flex-shrink-0 group/image">
+              {/* Cadre décoratif */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 blur"></div>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl opacity-0 group-hover/image:opacity-30 transition-opacity duration-500"></div>
+              
+              {/* Image */}
+              <div className="relative w-[280px] h-[540px] rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 group-hover/image:scale-105 group-hover/image:-translate-y-2 cursor-pointer">
+                <img 
+                  src={img} 
+                  alt={`Interface Hoom ${index + 1}`} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110"
+                />
+                
+                {/* Overlay au survol */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Numéro d'image */}
+                <div className="absolute bottom-4 left-4 text-white/80 text-sm font-light opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover/image:translate-y-0">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+              </div>
+            </div>
+          ))}
+          
+          {/* Duplication pour l'effet infini */}
+          {[im1, im2, im3, im4].map((img, index) => (
+            <div key={`row1-dup-${index}`} className="relative flex-shrink-0 group/image">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 blur"></div>
+              <div className="relative w-[280px] h-[540px] rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 group-hover/image:scale-105 group-hover/image:-translate-y-2 cursor-pointer">
+                <img src={img} alt={`Interface Hoom ${index + 1}`} className="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute bottom-4 left-4 text-white/80 text-sm font-light opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover/image:translate-y-0">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* Deuxième rangée - Défilement droite */}
+    <div className="relative group">
+      {/* Badge de rangée */}
+      <div className="absolute -top-4 right-8 z-20">
+        <span className="text-xs font-medium text-gray-400 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-gray-200">
+          Fonctionnalités
+        </span>
+      </div>
+
+      {/* Overlays gradients */}
+      <div className="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-gray-50 via-gray-50/80 to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-gray-50 via-gray-50/80 to-transparent z-10 pointer-events-none"></div>
+      
+      {/* Conteneur du carrousel */}
+      <div className="overflow-hidden rounded-3xl">
+        <div className="flex gap-6 animate-scroll-right hover:pause-animation py-4">
+          {/* Images 5-8 */}
+          {[im5, im6, im7, im8].map((img, index) => (
+            <div key={`row2-${index}`} className="relative flex-shrink-0 group/image">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-3xl opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 blur"></div>
+              <div className="relative w-[280px] h-[540px] rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 group-hover/image:scale-105 group-hover/image:-translate-y-2 cursor-pointer">
+                <img src={img} alt={`Interface Hoom ${index + 5}`} className="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute bottom-4 left-4 text-white/80 text-sm font-light opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover/image:translate-y-0">
+                  {String(index + 5).padStart(2, '0')}
+                </div>
+              </div>
+            </div>
+          ))}
+          
+          {/* Duplication */}
+          {[im5, im6, im7, im8].map((img, index) => (
+            <div key={`row2-dup-${index}`} className="relative flex-shrink-0 group/image">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-3xl opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 blur"></div>
+              <div className="relative w-[280px] h-[540px] rounded-2xl overflow-hidden shadow-xl transform transition-all duration-500 group-hover/image:scale-105 group-hover/image:-translate-y-2 cursor-pointer">
+                <img src={img} alt={`Interface Hoom ${index + 5}`} className="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute bottom-4 left-4 text-white/80 text-sm font-light opacity-0 group-hover/image:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover/image:translate-y-0">
+                  {String(index + 5).padStart(2, '0')}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* Indicateurs de défilement */}
+    <div className="flex flex-col items-center mt-16 space-y-4">
+      {/* Barre de progression */}
+      <div className="w-48 h-1 bg-gray-200 rounded-full overflow-hidden">
+        <div className="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full w-1/3 animate-progress"></div>
+      </div>
+      
+      {/* Texte indicatif */}
+      <p className="text-sm text-gray-400 flex items-center gap-2">
+        <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
+        Survolez pour explorer • Défilement automatique
+        <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
+      </p>
+    </div>
+  </div>
+
+  {/* Styles additionnels */}
+  <style>{`
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-100% - 1.5rem)); }
+    }
+
+    @keyframes scroll-right {
+      0% { transform: translateX(calc(-100% - 1.5rem)); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes progress {
+      0% { transform: translateX(-100%); }
+      50% { transform: translateX(0); }
+      100% { transform: translateX(100%); }
+    }
+
+    .animate-scroll-left {
+      animation: scroll-left 45s linear infinite;
+    }
+
+    .animate-scroll-right {
+      animation: scroll-right 45s linear infinite;
+    }
+
+    .animate-progress {
+      animation: progress 3s ease-in-out infinite;
+    }
+
+    .hover\\:pause-animation:hover {
+      animation-play-state: paused;
+    }
+
+    @media (max-width: 768px) {
+      .animate-scroll-left,
+      .animate-scroll-right {
+        animation-duration: 30s;
+      }
+    }
+  `}</style>
+</section>
 
       <section
         id="lycee"
@@ -1367,12 +1596,12 @@ function App() {
                     {
                       name: "Google Play",
                       icon: <Smartphone className="w-5 h-5 text-emerald-400" />,
-                      href: "https://play.google.com/store/apps/details?id=com.hoom.app",
+                      href: "https://play.google.com/store/apps/details?id=com.saad2000.ebaro",
                     },
                     {
                       name: "App Store",
                       icon: <Smartphone className="w-5 h-5 text-blue-400" />,
-                      href: "https://apps.apple.com/app/hoom/id123456789",
+                      href: "#",
                     },
                   ].map((store, index) => (
                     <a
